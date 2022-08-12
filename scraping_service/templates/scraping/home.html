@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <form method="GET" action="">
+    {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+    </div>
+</div>
+
+{% for obj in object_list %}
+    <div class="card my-3">
+  <div class="card-header">
+    <a href="{{ obj.url }}">{{ obj.title }}</a>
+      <div style="float:right; margin-top: 4px"><h6>{{ obj.company }} &copy;</h6></div>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ obj.description }} </p>
+    <p>{{ obj.city.name }} || {{ obj.language.name }} ||  {{ obj.timestamp|date:"d F Y" }}</p>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}
+
+
+
